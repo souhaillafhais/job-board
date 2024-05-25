@@ -1,0 +1,56 @@
+{% extends 'base.html'  %}
+{% load bootstrap4 %}
+{% block body %}
+
+
+   <!-- bradcam_area  -->
+   <div class="bradcam_area bradcam_bg_1">
+       <div class="container">
+           <div class="row">
+               <div class="col-xl-12">
+                   <div class="bradcam_text">
+                       <h3><img src="{{ profile.image.url }}" class="profile-image" style="object-fit:cover; width:200px;height:200px;border-radius:50%;" > {{ profile.user.first_name }} {{ profile.user.last_name }}</h3>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+   <!--/ bradcam_area  -->
+
+   <div class="job_details_area">
+       <div class="container">
+           <div class="row">
+
+               </div>
+               <div class="col-lg-8 mx-auto">
+                   <div class="job_sumary">
+                       <div class="summery_header">
+                           <h3>Profile Summary</h3>
+                       </div>
+
+                       <div class="job_content">
+                        <ul style="list-style-type: none;">
+                            <li>Name: <span>{{profile}}</span></li>
+                            <li>E-mail: <span>{{profile.user.email}}</span></li>
+                            <li>Phone: <span>{{profile.phone_number}}</span></li>
+                            <li>Address: <span>{{profile.city}}</span></li>
+                        </ul>
+                       </div>
+                       <div class="p-5 mx-lg-4">
+                        <ul>
+                            <li style="display:inline-block;">
+                                <a href="{% url 'accounts:profile_edit' %}" class="btn btn-outline-success"><span style="text-align: center"> Edit Profile </span></a>                            </li>
+                            <li style="display:inline-block;">
+                                <a href="{% url 'password_change' %}"   class="btn btn-outline-dark" ><span style="text-align: center">Change password </span></a>                            </li>
+                        </ul>
+
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+{% endblock body %}
+
+

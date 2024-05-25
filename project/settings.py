@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,12 +26,15 @@ SECRET_KEY = 'django-insecure-l056irng6ga5a^l9e554fz=78_aj2i2luab+q0q9l0$qc2s(*+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.11.144',
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +44,13 @@ INSTALLED_APPS = [
 
 
     #my_apps
-    'job',
+    'job', 
+    'home',
+    'contact',
+    'blog',
+    'bootstrap4',
+    'django_filters',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +68,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,6 +130,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    "static",
+]
+MEDIA_URL ='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR ,"media")
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'login'
+
+
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER ='athepro17@gmail.com'
+EMAIL_HOST_PASSWORD ='lrgl rbem reql hqxw'
+EMAIL_USE_TLS = True
+EMAIL_PORT ='587'
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
